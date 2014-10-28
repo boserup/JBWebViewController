@@ -42,6 +42,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self adjustNavigationbar];
+}
+
 - (void)show {
     // Creates navigation controller, and presents it
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
@@ -74,8 +78,7 @@
     [_subtitleLabel sizeToFit];
     
     // Correct frame sizes after sizeToFit
-    [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleLabel.frame.origin.y, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - 110), _titleLabel.frame.size.height)];
-    [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, _subtitleLabel.frame.origin.y, MIN(_subtitleLabel.frame.size.width, self.view.frame.size.width - 110), _subtitleLabel.frame.size.height)];
+    [self adjustNavigationbar];
     
     // Add new titleview with labels
     _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
@@ -116,16 +119,21 @@
     }];
 }
 
+- (void)adjustNavigationbar {
+    [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleLabel.frame.origin.y, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - 110), _titleLabel.frame.size.height)];
+    [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, _subtitleLabel.frame.origin.y, MIN(_subtitleLabel.frame.size.width, self.view.frame.size.width - 110), _subtitleLabel.frame.size.height)];
+}
+
 - (void)setWebTitle:(NSString *)title {
     [_titleLabel setText:title];
     [_titleLabel sizeToFit];
-    [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleLabel.frame.origin.y, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - 110), _titleLabel.frame.size.height)];
+    [self adjustNavigationbar];
 }
 
 - (void)setWebSubtitle:(NSString *)subtitle {
     [_subtitleLabel setText:subtitle];
     [_subtitleLabel sizeToFit];
-    [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, _subtitleLabel.frame.origin.y, MIN(_subtitleLabel.frame.size.width, self.view.frame.size.width - 110), _subtitleLabel.frame.size.height)];
+    [self adjustNavigationbar];
 }
 
 - (NSString *)getDomainFromString:(NSString*)string
