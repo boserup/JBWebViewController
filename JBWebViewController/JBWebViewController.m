@@ -114,9 +114,9 @@
          }
          _popoverShareController = [[UIPopoverController alloc] initWithContentViewController:controller];
          [_popoverShareController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItems[1] permittedArrowDirections: UIPopoverArrowDirectionAny animated:YES];
+     } else {
+         [self presentViewController:controller animated:YES completion:nil];
      }
-    
-    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)dismiss {
