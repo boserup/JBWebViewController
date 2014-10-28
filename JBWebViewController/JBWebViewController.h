@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
+#import <ARChromeActivity/ARChromeActivity.h>
+#import <ARSafariActivity/ARSafariActivity.h>
+
 @interface JBWebViewController : UIViewController
 
 - (id)initWithUrl:(NSURL *)url;

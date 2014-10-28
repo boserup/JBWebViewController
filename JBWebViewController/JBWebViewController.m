@@ -68,7 +68,10 @@
     NSURL *URLForActivityItem;
     URLForActivityItem = self.webView.request.URL;
     
-    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[URLForActivityItem] applicationActivities:nil];
+    ARSafariActivity *safariActivity = [[ARSafariActivity alloc] init];
+    ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
+    
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[URLForActivityItem] applicationActivities:@[safariActivity, chromeActivity]];
     
     [self presentViewController:controller animated:YES completion:nil];
 }
