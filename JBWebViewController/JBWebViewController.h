@@ -13,5 +13,6 @@
 
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;
+- (void)dismiss;
 
 @end
