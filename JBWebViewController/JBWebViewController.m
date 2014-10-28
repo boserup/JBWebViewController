@@ -143,14 +143,40 @@
     [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, _subtitleLabel.frame.origin.y, MIN(_subtitleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _subtitleLabel.frame.size.height)];
 }
 
-- (void)addExtraButtons {
-    UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(share)];
-    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(share)];
-    [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:prevButton, nextButton, nil]];
+- (void)addNavigationButtonsButtons {
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(navigateBack)];
+    UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(navigateForward)];
+    [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:backButton, forwardButton, nil]];
     
     _hasExtraButtons = YES;
     
     [self adjustNavigationbar];
+}
+
+- (void)updateNavigationButtons {
+    if(!self.navigationItem.leftBarButtonItems.count && [_webView canGoBack]) {
+        [self addNavigationButtonsButtons];
+    }
+    
+    if([_webView canGoBack]) {
+        ((UIBarButtonItem *)self.navigationItem.leftBarButtonItems[0]).enabled = YES;
+    } else {
+        ((UIBarButtonItem *)self.navigationItem.leftBarButtonItems[0]).enabled = NO;
+    }
+    
+    if([_webView canGoForward]) {
+        ((UIBarButtonItem *)self.navigationItem.leftBarButtonItems[1]).enabled = YES;
+    } else {
+        ((UIBarButtonItem *)self.navigationItem.leftBarButtonItems[1]).enabled = NO;
+    }
+}
+
+- (void)navigateBack {
+    [_webView goBack];
+}
+
+- (void)navigateForward {
+    [_webView goForward];
 }
 
 - (void)setWebTitle:(NSString *)title {
@@ -198,7 +224,7 @@
     [self setWebTitle:title];
     [self setWebSubtitle:subtitle];
     
-    [self addExtraButtons];
+    [self updateNavigationButtons];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
