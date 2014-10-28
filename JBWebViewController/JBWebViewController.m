@@ -17,6 +17,8 @@
     @property UIView *titleView;
     @property (nonatomic, strong) UIPopoverController *popoverShareController;
 
+    @property BOOL hasExtraButtons;
+
 @end
 
 @implementation JBWebViewController
@@ -54,6 +56,9 @@
 }
 
 - (void)setup {
+    // Default value
+    _hasExtraButtons = NO;
+    
     // Allows navigationbar to overlap webview
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.edgesForExtendedLayout = UIRectEdgeTop;
@@ -88,9 +93,9 @@
     self.navigationItem.titleView = _titleView;
     
     // Inset right buttons
-    UIBarButtonItem *btnShare = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
-    UIBarButtonItem *btnRefresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(dismiss)];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnRefresh, btnShare, nil]];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
+    UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(dismiss)];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:dismissButton, shareButton, nil]];
     
     // Add a webview
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
@@ -126,8 +131,26 @@
 }
 
 - (void)adjustNavigationbar {
-    [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleLabel.frame.origin.y, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - 110), _titleLabel.frame.size.height)];
-    [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, _subtitleLabel.frame.origin.y, MIN(_subtitleLabel.frame.size.width, self.view.frame.size.width - 110), _subtitleLabel.frame.size.height)];
+    float buttonsWidth;
+    
+    if(_hasExtraButtons) {
+        buttonsWidth = 220;
+    } else {
+        buttonsWidth = 110;
+    }
+    
+    [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleLabel.frame.origin.y, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _titleLabel.frame.size.height)];
+    [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, _subtitleLabel.frame.origin.y, MIN(_subtitleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _subtitleLabel.frame.size.height)];
+}
+
+- (void)addExtraButtons {
+    UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(share)];
+    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(share)];
+    [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:prevButton, nextButton, nil]];
+    
+    _hasExtraButtons = YES;
+    
+    [self adjustNavigationbar];
 }
 
 - (void)setWebTitle:(NSString *)title {
@@ -174,6 +197,8 @@
     
     [self setWebTitle:title];
     [self setWebSubtitle:subtitle];
+    
+    [self addExtraButtons];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
