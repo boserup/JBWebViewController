@@ -15,9 +15,7 @@
     @property UILabel *titleLabel;
     @property UILabel *subtitleLabel;
     @property UIView *titleView;
-
-#warning TODO: iPad support
-    @property (nonatomic, strong) UIPopoverController *actionPopoverController;
+    @property (nonatomic, strong) UIPopoverController *popoverShareController;
 
 @end
 
@@ -109,6 +107,14 @@
     ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
     
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.request.URL] applicationActivities:@[safariActivity, chromeActivity]];
+    
+     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+         if(_popoverShareController) {
+             [_popoverShareController dismissPopoverAnimated:YES];
+         }
+         _popoverShareController = [[UIPopoverController alloc] initWithContentViewController:controller];
+         [_popoverShareController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItems[1] permittedArrowDirections: UIPopoverArrowDirectionAny animated:YES];
+     }
     
     [self presentViewController:controller animated:YES completion:nil];
 }
