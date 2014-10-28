@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JBWebViewController.h"
+
 
 @interface ViewController : UIViewController
 
+- (IBAction)showModal:(id)sender;
 
 @end
 

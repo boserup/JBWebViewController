@@ -10,18 +10,45 @@
 
 @interface JBWebViewController ()
 
+    @property NSURL *url;
+    @property UIWebView *webView;
+
 @end
 
 @implementation JBWebViewController
 
+- (id)initWithUrl:(NSURL *)url {
+    _url = url;
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor redColor];
+    [self setup];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)show {
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+    
+    [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:navigationController animated:YES completion:^{
+        // Code
+    }];
+}
+
+- (void)setup {
+    _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:_webView];
+    
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://google.com"]]];
 }
 
 /*

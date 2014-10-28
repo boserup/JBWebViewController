@@ -24,4 +24,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)showModal:(id)sender {
+    JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:@"http://apple.com"]];
+    [controller show];
+}
 @end

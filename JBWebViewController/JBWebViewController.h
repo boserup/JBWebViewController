@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @interface JBWebViewController : UIViewController
+
+- (id)initWithUrl:(NSURL *)url;
+- (void)show;
 
 @end
