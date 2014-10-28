@@ -13,6 +13,7 @@
 @interface ViewController : UIViewController
 
 - (IBAction)showModal:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *urlField;
 
 @end
 

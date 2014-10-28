@@ -25,7 +25,7 @@
 }
 
 - (IBAction)showModal:(id)sender {
-    JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:@"http://apple.com"]];
+    JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:_urlField.text]];
     [controller show];
 }
 @end
