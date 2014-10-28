@@ -12,7 +12,7 @@
 #import <ARChromeActivity/ARChromeActivity.h>
 #import <ARSafariActivity/ARSafariActivity.h>
 
-@interface JBWebViewController : UIViewController
+@interface JBWebViewController : UIViewController <UIWebViewDelegate>
 
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;

@@ -58,6 +58,7 @@
     
     // Add a webview
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    [_webView setDelegate:self];
     [self.view addSubview:_webView];
     
     // Load url
@@ -65,13 +66,10 @@
 }
 
 - (void)share {
-    NSURL *URLForActivityItem;
-    URLForActivityItem = self.webView.request.URL;
-    
     ARSafariActivity *safariActivity = [[ARSafariActivity alloc] init];
     ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
     
-    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[URLForActivityItem] applicationActivities:@[safariActivity, chromeActivity]];
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.request.URL] applicationActivities:@[safariActivity, chromeActivity]];
     
     [self presentViewController:controller animated:YES completion:nil];
 }
@@ -82,14 +80,28 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - UIWebViewDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#warning TODO: Progressbar for UIWebView
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return true;
 }
-*/
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    
+}
 
 @end
