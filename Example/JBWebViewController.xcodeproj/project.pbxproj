@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D880FBE19FFDF2F00CB8874 /* JBWebViewController in Resources */ = {isa = PBXBuildFile; fileRef = 3D880FBD19FFDF2F00CB8874 /* JBWebViewController */; };
 		3DCC470E19FFDD54006620A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCC470D19FFDD54006620A0 /* main.m */; };
 		3DCC471119FFDD54006620A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCC471019FFDD54006620A0 /* AppDelegate.m */; };
 		3DCC471419FFDD54006620A0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCC471319FFDD54006620A0 /* ViewController.m */; };
@@ -14,7 +15,6 @@
 		3DCC471919FFDD54006620A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DCC471819FFDD54006620A0 /* Images.xcassets */; };
 		3DCC471C19FFDD54006620A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCC471A19FFDD54006620A0 /* LaunchScreen.xib */; };
 		3DCC472819FFDD54006620A0 /* JBWebViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCC472719FFDD54006620A0 /* JBWebViewControllerTests.m */; };
-		3DCC473419FFDE24006620A0 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCC473319FFDE24006620A0 /* JBWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D880FBD19FFDF2F00CB8874 /* JBWebViewController */ = {isa = PBXFileReference; lastKnownFileType = folder; name = JBWebViewController; path = ../../JBWebViewController; sourceTree = "<group>"; };
 		3DCC470819FFDD54006620A0 /* JBWebViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JBWebViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DCC470C19FFDD54006620A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DCC470D19FFDD54006620A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,8 +42,6 @@
 		3DCC472119FFDD54006620A0 /* JBWebViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JBWebViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DCC472619FFDD54006620A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DCC472719FFDD54006620A0 /* JBWebViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JBWebViewControllerTests.m; sourceTree = "<group>"; };
-		3DCC473219FFDE24006620A0 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
-		3DCC473319FFDE24006620A0 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +83,7 @@
 		3DCC470A19FFDD54006620A0 /* JBWebViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3DCC473119FFDE13006620A0 /* JBWebViewController */,
+				3D880FBD19FFDF2F00CB8874 /* JBWebViewController */,
 				3DCC470F19FFDD54006620A0 /* AppDelegate.h */,
 				3DCC471019FFDD54006620A0 /* AppDelegate.m */,
 				3DCC471219FFDD54006620A0 /* ViewController.h */,
@@ -121,15 +120,6 @@
 				3DCC472619FFDD54006620A0 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3DCC473119FFDE13006620A0 /* JBWebViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3DCC473219FFDE24006620A0 /* JBWebViewController.h */,
-				3DCC473319FFDE24006620A0 /* JBWebViewController.m */,
-			);
-			path = JBWebViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D880FBE19FFDF2F00CB8874 /* JBWebViewController in Resources */,
 				3DCC471719FFDD54006620A0 /* Main.storyboard in Resources */,
 				3DCC471C19FFDD54006620A0 /* LaunchScreen.xib in Resources */,
 				3DCC471919FFDD54006620A0 /* Images.xcassets in Resources */,
@@ -233,7 +224,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DCC471419FFDD54006620A0 /* ViewController.m in Sources */,
-				3DCC473419FFDE24006620A0 /* JBWebViewController.m in Sources */,
 				3DCC471119FFDD54006620A0 /* AppDelegate.m in Sources */,
 				3DCC470E19FFDD54006620A0 /* main.m in Sources */,
 			);
