@@ -1,0 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+pod 'ARChromeActivity', '~> 1.0'
+pod 'ARSafariActivity', '~> 0.0.1'
