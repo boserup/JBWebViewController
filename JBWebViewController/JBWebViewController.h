@@ -17,5 +17,7 @@
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;
 - (void)dismiss;
+- (void)setWebTitle:(NSString *)title;
+- (void)setWebSubtitle:(NSString *)subtitle;
 
 @end
