@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  JBWebViewController.h
 //  JBWebViewController
 //
 //  Created by Jonas Boserup on 28/10/14.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface JBWebViewController : UIViewController
 
 @end
-
