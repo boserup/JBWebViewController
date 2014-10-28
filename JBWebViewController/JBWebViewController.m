@@ -45,6 +45,9 @@
 }
 
 - (void)setup {
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    self.edgesForExtendedLayout = UIRectEdgeTop;
+    
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:_webView];
     
