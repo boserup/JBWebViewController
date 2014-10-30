@@ -26,6 +26,12 @@
 
 - (IBAction)showModal:(id)sender {
     JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:_urlField.text]];
-    [controller show];
+    
+    //[controller show];
+    
+    [controller showControllerWithCompletion:^(JBWebViewController *controller) {
+        // Completion typedef callback
+        NSLog(@"Controller has arrived.");
+    }];
 }
 @end
