@@ -79,6 +79,9 @@ NSString *controllerTitle = [controller getWebTitle];
 NSString *controllerSubtitle = [controller getWebSubtitle];
 ```
 
+## Icons
+Free icons by [Icon8s](http://icons8.com/) under Creative Commons Attribution-NoDerivs 3.0 Unported.
+
 ## Contact
 
 Mention me on Twitter ([@JonasBoserup](https://twitter.com/JonasBoserup)) or email me ([Profile](https://github.com/boserup)).
