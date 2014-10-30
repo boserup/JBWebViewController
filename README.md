@@ -3,6 +3,8 @@ JBWebViewController
 
 A drop-in Facebook inspired modal web browser.
 
+Created under the [DigitalOcean Hacktoberfest](http://hacktoberfest.digitalocean.com/).
+
 <img src="https://raw.githubusercontent.com/boserup/JBWebViewController/master/Example/screenshot.png" alt="JBWebViewController Screenshot" width="400" height="720">
 
 ## Video Demo
