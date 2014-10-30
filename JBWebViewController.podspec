@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "JBWebViewController"
-  s.version      = "1.0"
+  s.version      = "1.0.1"
   s.summary      = "A modal view controller for showing websites - inspired by the Facebook app"
   s.description  = <<-DESC
                    A drop-in Facebook inspired modal web browser.
@@ -22,8 +22,8 @@ Pod::Spec.new do |s|
   s.author             = { "Jonas Boserup" => "jonas@iboserup.dk" }
   s.social_media_url   = "http://twitter.com/JonasBoserup"
   s.platform     = :ios, "8.0"
-  s.source             = { :git => "https://github.com/boserup/JBWebViewController.git", :tag => "1.0" }
-  s.source_files  = "JBWebViewController/*.{h,m}"
+  s.source             = { :git => "https://github.com/boserup/JBWebViewController.git", :tag => "1.0.1" }
+  s.source_files  = "JBWebViewController/*"
   s.weak_framework = 'WebKit'
   s.requires_arc = true
   s.dependency 'ARChromeActivity', '1.0'
