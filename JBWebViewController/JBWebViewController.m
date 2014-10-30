@@ -137,7 +137,15 @@
     [self.view addSubview:_webView];
     
     // Load url
-    [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
+    [self navigateToURL:_url];
+}
+
+- (void)navigateToURL:(NSURL *)url {
+    [_webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
+- (void)reload {
+    [_webView reload];
 }
 
 - (void)share {
@@ -223,6 +231,14 @@
     [_subtitleLabel setText:subtitle];
     [_subtitleLabel sizeToFit];
     [self adjustNavigationbar];
+}
+
+- (NSString *)getWebTitle {
+    return _titleLabel.text;
+}
+
+- (NSString *)getWebSubtitle {
+    return _subtitleLabel.text;
 }
 
 - (NSString *)getDomainFromString:(NSString*)string

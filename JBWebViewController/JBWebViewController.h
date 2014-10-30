@@ -23,8 +23,16 @@ typedef void (^completion)(JBWebViewController *controller);
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;
 - (void)dismiss;
+- (void)reload;
+- (void)share;
 - (void)setWebTitle:(NSString *)title;
 - (void)setWebSubtitle:(NSString *)subtitle;
 - (void)showControllerWithCompletion:(completion)completion;
+- (void)navigateToURL:(NSURL *)url;
+- (void)loadRequest:(NSURLRequest)request;
+
+// Public return methods
+- (NSString *)getWebTitle;
+- (NSString *)getWebSubtitle;
 
 @end
