@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
   s.source             = { :git => "https://github.com/boserup/JBWebViewController.git", :tag => "1.0" }
   s.source_files  = "JBWebViewController/*.{h,m}"
   s.weak_framework = 'WebKit'
+  s.requires_arc = true
   s.dependency 'ARChromeActivity', '1.0'
   s.dependency 'ARSafariActivity', '0.0.1'
   s.dependency 'NJKWebViewProgress', '0.2'
