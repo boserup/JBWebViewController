@@ -15,7 +15,7 @@ alt="JBWebViewController Video Demo" width="240" height="180" border="10" /></a>
 ## Installation
 
 ### CocoaPods
-The recommended approach for installating JBWebViewController is through the package manager [CocoaPods](http://cocoapods.org/), which is widely used by iOS & Mac developers.
+The recommended approach for installing JBWebViewController is through the package manager [CocoaPods](http://cocoapods.org/), which is widely used by iOS & Mac developers.
 
 Simply add the following line to your Podfile:
 ```ruby
