@@ -19,9 +19,9 @@ Does not work yet. Still on TODO list.
 Drag the JBWebViewController folder into your Xcode project, you may need to check the box "Copy items into destination group's folder (if needed)".
 
 JBWebViewController needs the following third-party libraries:
-* [ARChromeActivity(https://github.com/alextrob/ARChromeActivity)
-* [ARSafariActivity(https://github.com/alexruperez/ARSafariActivity)
-* [NJKWebViewProgress(https://github.com/ninjinkun/NJKWebViewProgress)
+* [ARChromeActivity](https://github.com/alextrob/ARChromeActivity)
+* [ARSafariActivity](https://github.com/alexruperez/ARSafariActivity)
+* [NJKWebViewProgress](https://github.com/ninjinkun/NJKWebViewProgress)
 
 ## How to use
 JBWebViewController is ment to be shown modally, which is recommended to be down with it's built in show functionality. Whilst not being recommended, it is however possible to present JBWebViewController outside a modal view controller. JBWebViewController show always be connected to a UINavigationController.
