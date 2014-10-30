@@ -80,7 +80,7 @@ NSString *controllerSubtitle = [controller getWebSubtitle];
 ```
 
 ## Icons
-Free icons by [Icon8s](http://icons8.com/) under Creative Commons Attribution-NoDerivs 3.0 Unported.
+Free icons by [Icons8](http://icons8.com/) under [Creative Commons Attribution-NoDerivs 3.0 Unported](https://creativecommons.org/licenses/by-nd/3.0/).
 
 ## Contact
 
