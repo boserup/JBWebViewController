@@ -153,7 +153,7 @@
 #pragma "Navigation"
 
 - (void)navigateToURL:(NSURL *)url {
-    // Tell UIWebView to load request
+    // Tell UIWebView to load url
     [_webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
@@ -170,6 +170,11 @@
 - (void)navigateForward {
     // Tell UIWebView to go forward
     [_webView goForward];
+}
+
+- (void)loadRequest:(NSURLRequest *)request {
+    // Tell UIWebView to load request
+    [_webView loadRequest:request];
 }
 
 #pragma "Right buttons"
