@@ -6,9 +6,11 @@
 //  Copyright (c) 2014 Jonas Boserup. All rights reserved.
 //
 
+// Required Apple libraries
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
+// Required third-party libraries
 #import <ARChromeActivity/ARChromeActivity.h>
 #import <ARSafariActivity/ARSafariActivity.h>
 #import <NJKWebViewProgress/NJKWebViewProgress.h>
@@ -16,7 +18,7 @@
 
 @interface JBWebViewController : UIViewController <UIWebViewDelegate, NJKWebViewProgressDelegate>
 
-// Blocks for completion
+// Typedef for completion block
 typedef void (^completion)(JBWebViewController *controller);
 
 // Public header methods
@@ -29,7 +31,7 @@ typedef void (^completion)(JBWebViewController *controller);
 - (void)setWebSubtitle:(NSString *)subtitle;
 - (void)showControllerWithCompletion:(completion)completion;
 - (void)navigateToURL:(NSURL *)url;
-- (void)loadRequest:(NSURLRequest)request;
+- (void)loadRequest:(NSURLRequest *)request;
 
 // Public return methods
 - (NSString *)getWebTitle;

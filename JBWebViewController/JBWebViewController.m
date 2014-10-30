@@ -10,20 +10,22 @@
 
 @interface JBWebViewController ()
 
-    @property NSURL *url;
-    @property UIWebView *webView;
-    @property UILabel *titleLabel;
-    @property UILabel *subtitleLabel;
-    @property UIView *titleView;
+    // Private properties
+    @property (nonatomic, strong) NSURL *url;
+    @property (nonatomic) BOOL hasExtraButtons;
+    @property (nonatomic, strong) UIView *titleView;
+    @property (nonatomic, strong) UIWebView *webView;
+    @property (nonatomic, strong) UILabel *titleLabel;
+    @property (nonatomic, strong) UILabel *subtitleLabel;
+    @property (nonatomic, strong) NJKWebViewProgress *progressProxy;
+    @property (nonatomic, strong) NJKWebViewProgressView *progressView;
     @property (nonatomic, strong) UIPopoverController *popoverShareController;
-    @property NJKWebViewProgressView *progressView;
-    @property NJKWebViewProgress *progressProxy;
-
-    @property BOOL hasExtraButtons;
 
 @end
 
 @implementation JBWebViewController
+
+#pragma "Standards"
 
 - (id)initWithUrl:(NSURL *)url {
     // Set url and init views
@@ -50,7 +52,7 @@
     [self.navigationController.navigationBar addSubview:_progressView];
 }
 
--(void)viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
@@ -60,22 +62,11 @@
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    // Will adjust views in UINavigationBar upon changed interface orientation
     [self adjustNavigationbar];
 }
 
-- (void)show {
-    [self showControllerWithCompletion:nil];
-}
-
-- (void)showControllerWithCompletion:(completion)completion {
-    // Creates navigation controller, and presents it
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-    
-    [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:navigationController animated:YES completion:^{
-        // Send completion callback;
-        completion(self);
-    }];
-}
+#pragma "Setup"
 
 - (void)setup {
     // Default value
@@ -123,6 +114,9 @@
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     [_webView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     
+    [self.view addSubview:_webView];
+    
+    // Configureing NJKWebViewProgress
     _progressProxy = [[NJKWebViewProgress alloc] init];
     _webView.delegate = _progressProxy;
     _progressProxy.webViewProxyDelegate = self;
@@ -134,35 +128,74 @@
     _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
     _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     
-    [self.view addSubview:_webView];
-    
-    // Load url
+    // Navigating to URL
     [self navigateToURL:_url];
 }
 
+#pragma "Showing controller"
+
+- (void)show {
+    // Showing controller with no completion void
+    [self showControllerWithCompletion:nil];
+}
+
+- (void)showControllerWithCompletion:(completion)completion {
+    // Creates navigation controller, and presents it
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+    
+    // Using modalViewController completion void
+    [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:navigationController animated:YES completion:^{
+        // Send completion callback
+        completion(self);
+    }];
+}
+
+#pragma "Navigation"
+
 - (void)navigateToURL:(NSURL *)url {
+    // Tell UIWebView to load request
     [_webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 - (void)reload {
+    // Tell UIWebView to reload
     [_webView reload];
 }
 
+- (void)navigateBack {
+    // Tell UIWebView to go back
+    [_webView goBack];
+}
+
+- (void)navigateForward {
+    // Tell UIWebView to go forward
+    [_webView goForward];
+}
+
+#pragma "Right buttons"
+
 - (void)share {
+    // Create instances of third-party share actions
     ARSafariActivity *safariActivity = [[ARSafariActivity alloc] init];
     ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
     
+    // Create share controller from our url
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.request.URL] applicationActivities:@[safariActivity, chromeActivity]];
     
-     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    // If device is iPad
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+         // Dismiss popover if present
          if(_popoverShareController) {
              [_popoverShareController dismissPopoverAnimated:YES];
          }
+         
+         // Insert share controller in popover and present it
          _popoverShareController = [[UIPopoverController alloc] initWithContentViewController:controller];
          [_popoverShareController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItems[1] permittedArrowDirections: UIPopoverArrowDirectionAny animated:YES];
-     } else {
+    } else {
+         // Present share sheet (on iPhone)
          [self presentViewController:controller animated:YES completion:nil];
-     }
+    }
 }
 
 - (void)dismiss {
@@ -171,7 +204,10 @@
     }];
 }
 
+#pragma "Navigationbar"
+
 - (void)adjustNavigationbar {
+    // Width of buttons in UINavigationBar
     float buttonsWidth;
     
     if(_hasExtraButtons) {
@@ -180,22 +216,28 @@
         buttonsWidth = 110;
     }
     
+    // Setting frames on title & subtitle labels
     [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleLabel.frame.origin.y, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _titleLabel.frame.size.height)];
     [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, _subtitleLabel.frame.origin.y, MIN(_subtitleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _subtitleLabel.frame.size.height)];
 }
 
 - (void)addNavigationButtonsButtons {
+    // Creating buttons
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"] style:UIBarButtonItemStylePlain target:self action:@selector(navigateBack)];
     UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Forward"] style:UIBarButtonItemStylePlain target:self action:@selector(navigateForward)];
     
+    // Adding buttons to NavigationBar
     [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:backButton, forwardButton, nil]];
     
+    // Remember that we have extra buttons now
     _hasExtraButtons = YES;
     
+    // And finally adjust NavigationBar
     [self adjustNavigationbar];
 }
 
 - (void)updateNavigationButtons {
+    // If no left buttons are present and webView can go back, then add buttons
     if(!self.navigationItem.leftBarButtonItems.count && [_webView canGoBack]) {
         [self addNavigationButtonsButtons];
     }
@@ -213,13 +255,7 @@
     }
 }
 
-- (void)navigateBack {
-    [_webView goBack];
-}
-
-- (void)navigateForward {
-    [_webView goForward];
-}
+#pragma "Titles & subtitles"
 
 - (void)setWebTitle:(NSString *)title {
     [_titleLabel setText:title];
@@ -240,6 +276,8 @@
 - (NSString *)getWebSubtitle {
     return _subtitleLabel.text;
 }
+
+#pragma "Helpers"
 
 - (NSString *)getDomainFromString:(NSString*)string
 {
