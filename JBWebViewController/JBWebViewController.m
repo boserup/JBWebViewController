@@ -242,12 +242,14 @@
         [self addNavigationButtonsButtons];
     }
     
+    // If we can go back, enable back button
     if([_webView canGoBack]) {
         ((UIBarButtonItem *)self.navigationItem.leftBarButtonItems[0]).enabled = YES;
     } else {
         ((UIBarButtonItem *)self.navigationItem.leftBarButtonItems[0]).enabled = NO;
     }
     
+    // If we can go forward, enable forward button
     if([_webView canGoForward]) {
         ((UIBarButtonItem *)self.navigationItem.leftBarButtonItems[1]).enabled = YES;
     } else {
@@ -258,21 +260,25 @@
 #pragma "Titles & subtitles"
 
 - (void)setWebTitle:(NSString *)title {
+    // Set title & update frame
     [_titleLabel setText:title];
     [_titleLabel sizeToFit];
     [self adjustNavigationbar];
 }
 
 - (void)setWebSubtitle:(NSString *)subtitle {
+    // Set subtitle & update frame
     [_subtitleLabel setText:subtitle];
     [_subtitleLabel sizeToFit];
     [self adjustNavigationbar];
 }
 
+// Get title
 - (NSString *)getWebTitle {
     return _titleLabel.text;
 }
 
+// Get subtitle
 - (NSString *)getWebSubtitle {
     return _subtitleLabel.text;
 }
@@ -281,8 +287,10 @@
 
 - (NSString *)getDomainFromString:(NSString*)string
 {
+    // Split url into components
     NSArray *components = [string componentsSeparatedByString:@"/"];
     for (NSString *match in components) {
+        // If component has range of ".", return match
         if ([match rangeOfString:@"."].location != NSNotFound){
             return match;
         }
@@ -299,6 +307,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    // Update title when page is loaded
     NSString *title = [webView stringByEvaluatingJavaScriptFromString: @"document.title"];
     NSString *subtitle = [webView stringByEvaluatingJavaScriptFromString:@"document.domain"];
     
@@ -310,14 +319,17 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    // Log error
     NSLog(@"%@", [error localizedDescription]);
 }
 
 #pragma mark - NJKWebViewProgressDelegate
 -(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
+    // Update NJKWebViewProgressView
     [_progressView setProgress:progress animated:YES];
     
+    // Update title
     NSString *title = [_webView stringByEvaluatingJavaScriptFromString: @"document.title"];
     
     if(title.length == 0) {
