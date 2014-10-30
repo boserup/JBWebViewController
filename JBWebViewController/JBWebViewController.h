@@ -11,8 +11,10 @@
 
 #import <ARChromeActivity/ARChromeActivity.h>
 #import <ARSafariActivity/ARSafariActivity.h>
+#import <NJKWebViewProgress/NJKWebViewProgress.h>
+#import <NJKWebViewProgress/NJKWebViewProgressView.h>
 
-@interface JBWebViewController : UIViewController <UIWebViewDelegate>
+@interface JBWebViewController : UIViewController <UIWebViewDelegate, NJKWebViewProgressDelegate>
 
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;

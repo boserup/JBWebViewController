@@ -16,6 +16,8 @@
     @property UILabel *subtitleLabel;
     @property UIView *titleView;
     @property (nonatomic, strong) UIPopoverController *popoverShareController;
+    @property NJKWebViewProgressView *progressView;
+    @property NJKWebViewProgress *progressProxy;
 
     @property BOOL hasExtraButtons;
 
@@ -40,6 +42,22 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height - 2, self.navigationController.navigationBar.frame.size.width, 2)];
+    [self.navigationController.navigationBar addSubview:_progressView];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    // Remove progress view
+    // because UINavigationBar is shared with other ViewControllers
+    [_progressView removeFromSuperview];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -100,7 +118,18 @@
     // Add a webview
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     [_webView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
-    [_webView setDelegate:self];
+    
+    _progressProxy = [[NJKWebViewProgress alloc] init];
+    _webView.delegate = _progressProxy;
+    _progressProxy.webViewProxyDelegate = self;
+    _progressProxy.progressDelegate = self;
+    
+    CGFloat progressBarHeight = 2.f;
+    CGRect navigaitonBarBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0, navigaitonBarBounds.size.height - progressBarHeight, navigaitonBarBounds.size.width, progressBarHeight);
+    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
+    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    
     [self.view addSubview:_webView];
     
     // Load url
@@ -204,16 +233,9 @@
 
 #pragma mark - UIWebViewDelegate
 
-#warning TODO: Progressbar for UIWebView
-
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     return true;
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -229,7 +251,21 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    NSLog(@"%@", [error localizedDescription]);
+}
+
+#pragma mark - NJKWebViewProgressDelegate
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
+{
+    [_progressView setProgress:progress animated:YES];
     
+    NSString *title = [_webView stringByEvaluatingJavaScriptFromString: @"document.title"];
+    
+    if(title.length == 0) {
+        [self setWebTitle:@"Loading.."];
+    } else {
+        [self setWebTitle:title];
+    }
 }
 
 @end
