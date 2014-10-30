@@ -32,7 +32,7 @@
     // [controller show];
     
     // Localization (not required, default is 'Loading..')
-    [controller setLoadingString:@"Chargement.."];
+    // [controller setLoadingString:@"Chargement.."];
     
     // Method for showing controller with completion block
     [controller showControllerWithCompletion:^(JBWebViewController *controller) {
