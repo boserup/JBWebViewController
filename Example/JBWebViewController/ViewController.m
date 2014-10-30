@@ -25,12 +25,15 @@
 }
 
 - (IBAction)showModal:(id)sender {
+    // Creating JBWebViewController and loading URL from text field.
     JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:_urlField.text]];
     
-    //[controller show];
+    // Simple method for showing controller
+    // [controller show];
     
+    // Method for showing controller with completion block
     [controller showControllerWithCompletion:^(JBWebViewController *controller) {
-        // Completion typedef callback
+        // Completion typedef block
         NSLog(@"Controller has arrived.");
     }];
 }
