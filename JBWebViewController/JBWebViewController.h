@@ -16,10 +16,15 @@
 
 @interface JBWebViewController : UIViewController <UIWebViewDelegate, NJKWebViewProgressDelegate>
 
+// Blocks for completion
+typedef void (^completion)(JBWebViewController *controller);
+
+// Public header methods
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;
 - (void)dismiss;
 - (void)setWebTitle:(NSString *)title;
 - (void)setWebSubtitle:(NSString *)subtitle;
+- (void)showControllerWithCompletion:(completion)completion;
 
 @end

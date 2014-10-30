@@ -64,11 +64,16 @@
 }
 
 - (void)show {
+    [self showControllerWithCompletion:nil];
+}
+
+- (void)showControllerWithCompletion:(completion)completion {
     // Creates navigation controller, and presents it
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
     
     [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:navigationController animated:YES completion:^{
-        // Code
+        // Send completion callback;
+        completion(self);
     }];
 }
 
