@@ -3,6 +3,11 @@ JBWebViewController
 
 A drop-in Facebook inspired modal web browser.
 
+## Video Demo
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=pyNy3VuTJTs
+" target="_blank"><img src="http://img.youtube.com/vi/pyNy3VuTJTs/0.jpg" 
+alt="JBWebViewController Video Demo" width="240" height="180" border="10" /></a>
+
 ## Installation
 
 ### CocoaPods
@@ -24,7 +29,7 @@ JBWebViewController needs the following third-party libraries:
 * [NJKWebViewProgress](https://github.com/ninjinkun/NJKWebViewProgress)
 
 ## How to use
-JBWebViewController is ment to be shown modally, which is recommended to be down with it's built in show functionality. Whilst not being recommended, it is however possible to present JBWebViewController outside a modal view controller. JBWebViewController show always be connected to a UINavigationController.
+JBWebViewController is ment to be shown modally, which is recommended to be down with it's built in show functionality. Whilst not being recommended, it is however possible to present JBWebViewController outside a modal view controller. JBWebViewController should always be connected to a UINavigationController.
 
 #### Presenting JBWebViewController
 ```objectivec
