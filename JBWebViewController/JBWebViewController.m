@@ -332,6 +332,7 @@
     // Update title
     NSString *title = [_webView stringByEvaluatingJavaScriptFromString: @"document.title"];
     
+    // If no title is found, set it to "Loading.."
     if(title.length == 0) {
         [self setWebTitle:@"Loading.."];
     } else {
