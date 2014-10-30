@@ -26,6 +26,7 @@
 @implementation JBWebViewController
 
 - (id)initWithUrl:(NSURL *)url {
+    // Set url and init views
     _url = url;
     [self setup];
     
@@ -43,6 +44,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // Add NJKWebViewProgressView to UINavigationBar
     _progressView = [[NJKWebViewProgressView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height - 2, self.navigationController.navigationBar.frame.size.width, 2)];
     [self.navigationController.navigationBar addSubview:_progressView];
 }
@@ -51,9 +54,9 @@
 {
     [super viewWillDisappear:animated];
     
-    // Remove progress view
-    // because UINavigationBar is shared with other ViewControllers
+    // Remove views
     [_progressView removeFromSuperview];
+    [_titleView removeFromSuperview];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
