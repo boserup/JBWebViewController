@@ -66,6 +66,14 @@
     [self adjustNavigationbar];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    CGFloat progressBarHeight = 2.f;
+    CGRect navigaitonBarBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0, navigaitonBarBounds.size.height - progressBarHeight, navigaitonBarBounds.size.width, progressBarHeight);
+    [_progressView setFrame:barFrame];
+}
+
 #pragma "Setup"
 
 - (void)setup {
