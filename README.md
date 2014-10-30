@@ -49,6 +49,11 @@ JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSUR
 }];
 ```
 
+#### Localization
+```objectivec
+[controller setLoadingString:@"Chargement.."];
+```
+
 #### Navigate to URL
 ```objectivec
 [controller navigateToURL:[NSURL URLWithString:@"http://www.apple.com/ios/"]];
