@@ -31,10 +31,14 @@
     // Simple method for showing controller
     // [controller show];
     
+    // Localization (not required, default is 'Loading..')
+    [controller setLoadingString:@"Chargement.."];
+    
     // Method for showing controller with completion block
     [controller showControllerWithCompletion:^(JBWebViewController *controller) {
         // Completion typedef block
         NSLog(@"Controller has arrived.");
     }];
+    
 }
 @end
