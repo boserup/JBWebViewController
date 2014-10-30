@@ -20,8 +20,6 @@ Simply add the following line to your Podfile:
 pod "JBWebViewController"
 ```
 
-Does not work yet. Still on TODO list.
-
 ### Manual Install
 Drag the JBWebViewController folder into your Xcode project, you may need to check the box "Copy items into destination group's folder (if needed)".
 
