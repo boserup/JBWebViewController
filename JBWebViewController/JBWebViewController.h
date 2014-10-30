@@ -21,6 +21,9 @@
 // Typedef for completion block
 typedef void (^completion)(JBWebViewController *controller);
 
+// Loding string
+@property (nonatomic, strong) NSString *loadingString;
+
 // Public header methods
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;

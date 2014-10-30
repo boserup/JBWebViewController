@@ -25,7 +25,7 @@
 
 @implementation JBWebViewController
 
-#pragma "Standards"
+#pragma mark - "Standards"
 
 - (id)initWithUrl:(NSURL *)url {
     // Set url and init views
@@ -80,7 +80,7 @@
     [_progressView setFrame:barFrame];
 }
 
-#pragma "Setup"
+#pragma mark - "Setup"
 
 - (void)setup {
     // Default value
@@ -96,7 +96,7 @@
     [_titleLabel setTextColor:[UIColor blackColor]];
     [_titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
     [_titleLabel setTextAlignment:NSTextAlignmentNatural];
-    [_titleLabel setText:@"Loading.."];
+    [_titleLabel setText:_loadingString];
     [_titleLabel sizeToFit];
     
     _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 14, 0, 0)];
@@ -146,7 +146,7 @@
     [self navigateToURL:_url];
 }
 
-#pragma "Showing controller"
+#pragma mark - "Showing controller"
 
 - (void)show {
     // Showing controller with no completion void
@@ -164,7 +164,7 @@
     }];
 }
 
-#pragma "Navigation"
+#pragma mark - "Navigation"
 
 - (void)navigateToURL:(NSURL *)url {
     // Tell UIWebView to load url
@@ -191,7 +191,7 @@
     [_webView loadRequest:request];
 }
 
-#pragma "Right buttons"
+#pragma mark - "Right buttons"
 
 - (void)share {
     // Create instances of third-party share actions
@@ -223,7 +223,7 @@
     }];
 }
 
-#pragma "Navigationbar"
+#pragma mark - "Navigationbar"
 
 - (void)adjustNavigationbar {
     // Width of buttons in UINavigationBar
@@ -276,7 +276,7 @@
     }
 }
 
-#pragma "Titles & subtitles"
+#pragma mark - "Titles & subtitles"
 
 - (void)setWebTitle:(NSString *)title {
     // Set title & update frame
@@ -302,7 +302,7 @@
     return _subtitleLabel.text;
 }
 
-#pragma "Helpers"
+#pragma mark - "Helpers"
 
 - (NSString *)getDomainFromString:(NSString*)string
 {
@@ -353,7 +353,7 @@
     
     // If no title is found, set it to "Loading.."
     if(title.length == 0) {
-        [self setWebTitle:@"Loading.."];
+        [self setWebTitle:_loadingString];
     } else {
         [self setWebTitle:title];
     }
