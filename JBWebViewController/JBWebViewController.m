@@ -32,19 +32,23 @@
     _url = url;
     [self setup];
     
+    // Return self
     return self;
 }
 
 - (void)viewDidLoad {
+    // Standard super class stuff
     [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
+    // Standard super class stuff
     [super didReceiveMemoryWarning];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // Standard super class stuff
     [super viewWillAppear:animated];
     
     // Add NJKWebViewProgressView to UINavigationBar
@@ -54,6 +58,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    // Standard super class stuff
     [super viewWillDisappear:animated];
     
     // Remove views
