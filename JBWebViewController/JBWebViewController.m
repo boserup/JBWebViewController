@@ -110,8 +110,8 @@
     self.navigationItem.titleView = _titleView;
     
     // Inset right buttons
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
-    UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(dismiss)];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Share"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
+    UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Dismiss"] style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:dismissButton, shareButton, nil]];
     
     // Add a webview
@@ -172,8 +172,9 @@
 }
 
 - (void)addNavigationButtonsButtons {
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(navigateBack)];
-    UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(navigateForward)];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"] style:UIBarButtonItemStylePlain target:self action:@selector(navigateBack)];
+    UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Forward"] style:UIBarButtonItemStylePlain target:self action:@selector(navigateForward)];
+    
     [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:backButton, forwardButton, nil]];
     
     _hasExtraButtons = YES;
