@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.author             = { "Jonas Boserup" => "jonas@iboserup.dk" }
   s.social_media_url   = "http://twitter.com/JonasBoserup"
   s.platform     = :ios, "7.0"
-  s.source             = { :git => "https://github.com/boserup/JBWebViewController.git", :tag => "1.0.2" }
+  s.source             = { :git => "https://github.com/boserup/JBWebViewController.git", :tag => "1.0.3" }
   s.source_files  = "JBWebViewController/*"
   s.weak_framework = 'WebKit'
   s.requires_arc = true
