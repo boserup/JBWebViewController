@@ -27,12 +27,14 @@ typedef void (^completion)(JBWebViewController *controller);
 // Public header methods
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;
+- (void)showFromController:(UIViewController*)controller;
 - (void)dismiss;
 - (void)reload;
 - (void)share;
 - (void)setWebTitle:(NSString *)title;
 - (void)setWebSubtitle:(NSString *)subtitle;
 - (void)showControllerWithCompletion:(completion)completion;
+- (void)showFromController:(UIViewController*)controller WithCompletion:(completion)completion;
 - (void)navigateToURL:(NSURL *)url;
 - (void)loadRequest:(NSURLRequest *)request;
 

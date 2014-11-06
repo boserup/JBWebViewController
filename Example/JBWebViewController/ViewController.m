@@ -40,5 +40,13 @@
         NSLog(@"Controller has arrived.");
     }];
     
+    
+}
+
+-(IBAction)showFrom:(id)sender {
+    JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:_urlField.text]];
+    [controller showFromController:self WithCompletion:^(JBWebViewController *controller) {
+        NSLog(@"Controller has arrived");
+    }];
 }
 @end

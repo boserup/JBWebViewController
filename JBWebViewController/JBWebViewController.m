@@ -153,6 +153,12 @@
     [self showControllerWithCompletion:nil];
 }
 
+- (void)showFromController:(UIViewController*)controller
+{
+    [self showFromController:controller WithCompletion:nil];
+    
+}
+
 - (void)showControllerWithCompletion:(completion)completion {
     // Creates navigation controller, and presents it
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
@@ -160,6 +166,13 @@
     // Using modalViewController completion void
     [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:navigationController animated:YES completion:^{
         // Send completion callback
+        completion(self);
+    }];
+}
+- (void)showFromController:(UIViewController*)controller WithCompletion:(completion)completion
+{
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+    [controller presentViewController:navigationController animated:YES completion:^{
         completion(self);
     }];
 }

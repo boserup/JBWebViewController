@@ -21,7 +21,6 @@
 		3DE8B55C1A02596700F02F0E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE8B55B1A02596700F02F0E /* CoreGraphics.framework */; };
 		3DE8B55E1A02597900F02F0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE8B55D1A02597900F02F0E /* Foundation.framework */; };
 		3DE8B5601A02597E00F02F0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE8B55F1A02597E00F02F0E /* UIKit.framework */; };
-		813FB68E40D2EA778D65AA4E /* libPods-JBWebViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C5896B2C32AD4C9E57974B /* libPods-JBWebViewController.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +71,6 @@
 				3DE8B55E1A02597900F02F0E /* Foundation.framework in Frameworks */,
 				3DE8B55C1A02596700F02F0E /* CoreGraphics.framework in Frameworks */,
 				3DCC24A11A0001C4005B9669 /* WebKit.framework in Frameworks */,
-				813FB68E40D2EA778D65AA4E /* libPods-JBWebViewController.a in Frameworks */,
 				395395B8CFF99794280F967F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
