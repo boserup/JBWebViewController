@@ -166,14 +166,18 @@
     // Using modalViewController completion void
     [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:navigationController animated:YES completion:^{
         // Send completion callback
-        completion(self);
+        if (completion) {
+            completion(self);
+        }
     }];
 }
 - (void)showFromController:(UIViewController*)controller WithCompletion:(completion)completion
 {
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
     [controller presentViewController:navigationController animated:YES completion:^{
-        completion(self);
+        if (completion) {
+            completion(self);
+        }
     }];
 }
 
