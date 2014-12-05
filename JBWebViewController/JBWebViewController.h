@@ -24,6 +24,9 @@ typedef void (^completion)(JBWebViewController *controller);
 // Loding string
 @property (nonatomic, strong) NSString *loadingString;
 
+// hide address bar
+@property (nonatomic, assign) BOOL hideAddressBar;
+
 // Public header methods
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;
