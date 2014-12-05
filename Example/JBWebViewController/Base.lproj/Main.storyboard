@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,34 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="JBWebViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBs-1f-6Xl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JBWebViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBs-1f-6Xl">
                                 <rect key="frame" x="16" y="45" width="343" height="39"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="A drop-in Facebook inspired web browser." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpp-34-hoi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A drop-in Facebook inspired web browser." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpp-34-hoi">
                                 <rect key="frame" x="16" y="92" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hct-60-QvX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.apple.com/" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oiH-VT-zOu">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.apple.com/" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oiH-VT-zOu">
                                 <rect key="frame" x="43" y="143" width="289" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAA-Tb-R1k">
-                                <rect key="frame" x="144" y="199" width="86" height="30"/>
-                                <state key="normal" title="Show modal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showModal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yz4-2o-hgc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5x8-uK-Be6">
-                                <rect key="frame" x="147" y="268" width="80" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5x8-uK-Be6">
+                                <rect key="frame" x="148" y="291" width="79" height="30"/>
                                 <state key="normal" title="Show From">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -53,19 +47,34 @@
                                     <action selector="showFrom:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SYR-uY-j9b"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAA-Tb-R1k">
+                                <rect key="frame" x="144" y="217" width="86" height="30"/>
+                                <state key="normal" title="Show modal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showModal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yz4-2o-hgc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mBs-1f-6Xl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="BMJ-26-KOY"/>
-                            <constraint firstItem="kAA-Tb-R1k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="128" id="CyN-4Z-Cqd"/>
+                            <constraint firstAttribute="centerX" secondItem="kAA-Tb-R1k" secondAttribute="centerX" id="Das-r4-fmA"/>
+                            <constraint firstItem="Wpp-34-hoi" firstAttribute="centerX" secondItem="5x8-uK-Be6" secondAttribute="centerX" id="PfU-QY-4v5"/>
                             <constraint firstItem="mBs-1f-6Xl" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RSj-8w-zWk"/>
+                            <constraint firstItem="Wpp-34-hoi" firstAttribute="leading" secondItem="mBs-1f-6Xl" secondAttribute="leading" id="RsG-Eg-QeW"/>
+                            <constraint firstItem="Wpp-34-hoi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="92" id="UEG-wV-pmX"/>
                             <constraint firstItem="oiH-VT-zOu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="27" id="USK-xQ-cOX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kAA-Tb-R1k" secondAttribute="trailing" constant="129" id="d0T-aT-dOf"/>
+                            <constraint firstAttribute="centerX" secondItem="5x8-uK-Be6" secondAttribute="centerX" id="Vir-Ty-Nqn"/>
+                            <constraint firstItem="5x8-uK-Be6" firstAttribute="centerX" secondItem="kAA-Tb-R1k" secondAttribute="centerX" id="ehc-qP-ks7"/>
+                            <constraint firstItem="Wpp-34-hoi" firstAttribute="trailing" secondItem="mBs-1f-6Xl" secondAttribute="trailing" id="fDY-uz-WtO"/>
                             <constraint firstItem="Wpp-34-hoi" firstAttribute="top" secondItem="mBs-1f-6Xl" secondAttribute="bottom" constant="8" id="lHG-5v-b1l"/>
                             <constraint firstItem="mBs-1f-6Xl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="mL8-Ro-X2T"/>
-                            <constraint firstItem="kAA-Tb-R1k" firstAttribute="top" secondItem="oiH-VT-zOu" secondAttribute="bottom" constant="26" id="teM-z6-mTb"/>
+                            <constraint firstItem="kAA-Tb-R1k" firstAttribute="top" secondItem="oiH-VT-zOu" secondAttribute="bottom" constant="44" id="teM-z6-mTb"/>
                             <constraint firstItem="oiH-VT-zOu" firstAttribute="top" secondItem="Wpp-34-hoi" secondAttribute="bottom" constant="30" id="vUS-VN-Zvj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oiH-VT-zOu" secondAttribute="trailing" constant="27" id="wrV-pu-qdt"/>
+                            <constraint firstItem="5x8-uK-Be6" firstAttribute="top" secondItem="kAA-Tb-R1k" secondAttribute="bottom" constant="44" id="yjk-UF-D1J"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
