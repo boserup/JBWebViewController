@@ -1,6 +1,8 @@
 JBWebViewController
 ===================
 
+Every property is public now.
+
 A drop-in Facebook inspired modal web browser.
 
 Created under the [DigitalOcean Hacktoberfest](http://hacktoberfest.digitalocean.com/).

@@ -11,15 +11,7 @@
 @interface JBWebViewController ()
 
     // Private properties
-    @property (nonatomic, strong) NSURL *url;
-    @property (nonatomic) BOOL hasExtraButtons;
-    @property (nonatomic, strong) UIView *titleView;
-    @property (nonatomic, strong) UIWebView *webView;
-    @property (nonatomic, strong) UILabel *titleLabel;
-    @property (nonatomic, strong) UILabel *subtitleLabel;
-    @property (nonatomic, strong) NJKWebViewProgress *progressProxy;
-    @property (nonatomic, strong) NJKWebViewProgressView *progressView;
-    @property (nonatomic, strong) UIPopoverController *popoverShareController;
+
 
 @end
 
