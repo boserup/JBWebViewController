@@ -29,5 +29,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.dependency 'ARChromeActivity', '1.0'
   s.dependency 'ARSafariActivity', '0.0.1'
-  s.dependency 'NJKWebViewProgress', '0.2'
+  s.dependency 'NJKWebViewProgress', '0.2.3'
 end
