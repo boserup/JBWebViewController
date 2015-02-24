@@ -148,6 +148,13 @@
 
 #pragma mark - "Showing controller"
 
+-(void)setHideAddressBar:(BOOL)hideAdressBar {
+    _hideAddressBar = hideAdressBar;
+    
+    self.subtitleLabel.hidden = hideAdressBar;
+    [self adjustNavigationbar];
+}
+
 - (void)show {
     // Showing controller with no completion void
     [self showControllerWithCompletion:nil];
@@ -253,8 +260,13 @@
     }
     
     // Setting frames on title & subtitle labels
-    [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleLabel.frame.origin.y, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _titleLabel.frame.size.height)];
+    if (_hideAddressBar) {
+        [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleView.frame.size.height/2-_titleLabel.frame.size.height/2, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _titleLabel.frame.size.height)];
+    } else {
+        [_titleLabel setFrame:CGRectMake(_titleLabel.frame.origin.x, _titleLabel.frame.origin.y, MIN(_titleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _titleLabel.frame.size.height)];
+    }
     [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, _subtitleLabel.frame.origin.y, MIN(_subtitleLabel.frame.size.width, self.view.frame.size.width - buttonsWidth), _subtitleLabel.frame.size.height)];
+    
 }
 
 - (void)addNavigationButtonsButtons {
