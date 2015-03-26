@@ -24,6 +24,9 @@ typedef void (^completion)(JBWebViewController *controller);
 // Loding string
 @property (nonatomic, strong) NSString *loadingString;
 
+// Public variables
+@property (nonatomic, strong) UIWebView *webView;
+
 // Public header methods
 - (id)initWithUrl:(NSURL *)url;
 - (void)show;
