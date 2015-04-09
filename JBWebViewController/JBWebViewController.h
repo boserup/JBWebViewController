@@ -26,6 +26,7 @@ typedef void (^completion)(JBWebViewController *controller);
 
 // Public variables
 @property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, assign) BOOL hideAddressBar;
 
 // Public header methods
 - (id)initWithUrl:(NSURL *)url;
