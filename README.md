@@ -3,8 +3,6 @@ JBWebViewController
 
 A drop-in Facebook inspired modal web browser.
 
-Created under the [DigitalOcean Hacktoberfest](http://hacktoberfest.digitalocean.com/).
-
 <img src="https://raw.githubusercontent.com/boserup/JBWebViewController/master/Example/screenshot.png" alt="JBWebViewController Screenshot" width="400" height="720">
 
 ## Video Demo
@@ -65,7 +63,6 @@ NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http
 [controller loadRequest:request];
 ```
 
-
 #### Reload current page
 ```objectivec
 [controller reload];
@@ -90,6 +87,22 @@ NSString *controllerTitle = [controller getWebTitle];
 ```objectivec
 NSString *controllerSubtitle = [controller getWebSubtitle];
 ```
+
+#### Hide URL
+```objectivec
+controller.hideAddressBar = YES;
+```
+
+#### Access UIWebView
+The UIWebView used in the controller is now pubic.
+```objectivec
+UIWebView *webView;
+```
+
+## Apps using JBWebViewController
+- [Ookull](http://itunes.apple.com/app/id934603488?mt=8)
+
+Feel free to add your app to the list.
 
 ## Icons
 Free icons by [Icons8](http://icons8.com/) under [Creative Commons Attribution-NoDerivs 3.0 Unported](https://creativecommons.org/licenses/by-nd/3.0/).
