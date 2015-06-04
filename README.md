@@ -93,6 +93,11 @@ NSString *controllerSubtitle = [controller getWebSubtitle];
 controller.hideAddressBar = YES;
 ```
 
+#### Hide Navigation Buttons (Back/Forward)
+```objectivec
+controller.hideNavigationButtons = YES;
+```
+
 #### Access UIWebView
 The UIWebView used in the controller is now pubic.
 ```objectivec

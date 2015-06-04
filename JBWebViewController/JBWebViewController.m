@@ -360,7 +360,11 @@
     [self setWebTitle:title];
     [self setWebSubtitle:subtitle];
     
-    [self updateNavigationButtons];
+    if (!self.hideNavigationButtons) {
+        
+        [self updateNavigationButtons];
+    }
+    
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
