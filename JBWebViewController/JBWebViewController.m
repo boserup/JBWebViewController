@@ -51,7 +51,9 @@
 {
     // Standard super class stuff
     [super viewWillAppear:animated];
-    
+    [_titleLabel setTextColor:self.navigationController.navigationBar.tintColor];
+    [_subtitleLabel setTextColor:self.navigationController.navigationBar.tintColor];
+
     // Add NJKWebViewProgressView to UINavigationBar
     _progressView = [[NJKWebViewProgressView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height - 2, self.navigationController.navigationBar.frame.size.width, 2)];
     [self.navigationController.navigationBar addSubview:_progressView];
@@ -94,7 +96,7 @@
     // Create title & subtitle labels
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [_titleLabel setBackgroundColor:[UIColor clearColor]];
-    [_titleLabel setTextColor:self.navigationController.navigationBar.tintColor];
+    [_titleLabel setTextColor:[UIColor blackColor]];
     [_titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
     [_titleLabel setTextAlignment:NSTextAlignmentNatural];
     [_titleLabel setText:_loadingString];
@@ -102,7 +104,7 @@
     
     _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 14, 0, 0)];
     [_subtitleLabel setBackgroundColor:[UIColor clearColor]];
-    [_subtitleLabel setTextColor:self.navigationController.navigationBar.tintColor];
+    [_subtitleLabel setTextColor:[UIColor blackColor]];
     [_subtitleLabel setFont:[UIFont systemFontOfSize:12]];
     [_subtitleLabel setTextAlignment:NSTextAlignmentLeft];
     [_subtitleLabel setText:[self getDomainFromString:[NSString stringWithFormat:@"%@", _url]]];
