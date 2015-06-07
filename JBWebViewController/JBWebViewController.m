@@ -27,9 +27,11 @@
 #pragma mark - "Standards"
 
 - (id)initWithUrl:(NSURL *)url {
-    // Set url and init views
-    _url = url;
-    [self setup];
+	if (self = [self init]) {
+    	// Set url and init views
+    	_url = url;
+    	[self setup];
+	}
     
     // Return self
     return self;
@@ -92,7 +94,7 @@
     // Create title & subtitle labels
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [_titleLabel setBackgroundColor:[UIColor clearColor]];
-    [_titleLabel setTextColor:[UIColor blackColor]];
+    [_titleLabel setTextColor:self.navigationController.navigationBar.tintColor];
     [_titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
     [_titleLabel setTextAlignment:NSTextAlignmentNatural];
     [_titleLabel setText:_loadingString];
@@ -100,7 +102,7 @@
     
     _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 14, 0, 0)];
     [_subtitleLabel setBackgroundColor:[UIColor clearColor]];
-    [_subtitleLabel setTextColor:[UIColor blackColor]];
+    [_subtitleLabel setTextColor:self.navigationController.navigationBar.tintColor];
     [_subtitleLabel setFont:[UIFont systemFontOfSize:12]];
     [_subtitleLabel setTextAlignment:NSTextAlignmentLeft];
     [_subtitleLabel setText:[self getDomainFromString:[NSString stringWithFormat:@"%@", _url]]];
