@@ -27,9 +27,11 @@
 #pragma mark - "Standards"
 
 - (id)initWithUrl:(NSURL *)url {
-    // Set url and init views
-    _url = url;
-    [self setup];
+	if (self = [self init]) {
+    	// Set url and init views
+    	_url = url;
+    	[self setup];
+	}
     
     // Return self
     return self;
@@ -49,7 +51,9 @@
 {
     // Standard super class stuff
     [super viewWillAppear:animated];
-    
+    [_titleLabel setTextColor:self.navigationController.navigationBar.tintColor];
+    [_subtitleLabel setTextColor:self.navigationController.navigationBar.tintColor];
+
     // Add NJKWebViewProgressView to UINavigationBar
     _progressView = [[NJKWebViewProgressView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height - 2, self.navigationController.navigationBar.frame.size.width, 2)];
     [self.navigationController.navigationBar addSubview:_progressView];
