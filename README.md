@@ -28,6 +28,12 @@ JBWebViewController needs the following third-party libraries:
 * [ARSafariActivity](https://github.com/alexruperez/ARSafariActivity)
 * [NJKWebViewProgress](https://github.com/ninjinkun/NJKWebViewProgress)
 
+## Apps using JBWebViewController
+- [Copenhagen Fashion Week®](http://itunes.apple.com/app/id901148180?mt=8)
+- [Ookull](http://itunes.apple.com/app/id934603488?mt=8)
+
+Feel free to add your app to the list.
+
 ## How to use
 JBWebViewController is ment to be shown modally, which is recommended to be down with it's built in show functionality. Whilst not being recommended, it is however possible to present JBWebViewController outside a modal view controller. JBWebViewController should always be connected to a UINavigationController.
 
@@ -98,11 +104,6 @@ The UIWebView used in the controller is now pubic.
 ```objectivec
 UIWebView *webView;
 ```
-
-## Apps using JBWebViewController
-- [Ookull](http://itunes.apple.com/app/id934603488?mt=8)
-
-Feel free to add your app to the list.
 
 ## Icons
 Free icons by [Icons8](http://icons8.com/) under [Creative Commons Attribution-NoDerivs 3.0 Unported](https://creativecommons.org/licenses/by-nd/3.0/).
