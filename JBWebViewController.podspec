@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.resources    = "JBWebViewController/Icons.xcassets"
   s.weak_framework = 'WebKit'
   s.requires_arc = true
-  s.dependency 'ARChromeActivity', '1.0'
-  s.dependency 'ARSafariActivity', '0.0.1'
+  s.dependency 'ARChromeActivity', '1.0.4'
+  s.dependency 'ARSafariActivity', '0.0.3'
   s.dependency 'NJKWebViewProgress', '0.2.3'
 end
