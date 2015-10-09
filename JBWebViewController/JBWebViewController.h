@@ -28,6 +28,7 @@ typedef void (^completion)(JBWebViewController *controller);
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, assign) BOOL hideAddressBar;
 @property (nonatomic, assign) BOOL hideNavigationButtons;
+@property (nonatomic, assign) BOOL hideShareAndCloseButtons;
 
 // Public header methods
 - (id)initWithUrl:(NSURL *)url;
