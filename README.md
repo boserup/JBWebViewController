@@ -100,7 +100,7 @@ controller.hideAddressBar = YES;
 ```
 
 #### Access UIWebView
-The UIWebView used in the controller is now pubic.
+The UIWebView used in the controller is now public.
 ```objectivec
 UIWebView *webView;
 ```
