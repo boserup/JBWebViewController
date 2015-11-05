@@ -37,6 +37,10 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    [self setup];
+}
+
 - (void)viewDidLoad {
     // Standard super class stuff
     [super viewDidLoad];
