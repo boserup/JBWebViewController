@@ -123,9 +123,21 @@
     self.navigationItem.titleView = _titleView;
     
     // Inset right buttons
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Share"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
-    UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Dismiss"] style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:dismissButton, shareButton, nil]];
+    UIImage *shareImage = [UIImage imageNamed:@"Share"
+                                     inBundle:[NSBundle bundleForClass:[JBWebViewController class]]
+                compatibleWithTraitCollection:nil];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareImage
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(share)];
+    UIImage *dismissImage = [UIImage imageNamed:@"Dismiss"
+                                     inBundle:[NSBundle bundleForClass:[JBWebViewController class]]
+                compatibleWithTraitCollection:nil];
+    UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithImage:dismissImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(dismiss)];
+    [self.navigationItem setRightBarButtonItems:@[dismissButton, shareButton]];
     
     // Add a webview
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
@@ -273,11 +285,23 @@
 
 - (void)addNavigationButtonsButtons {
     // Creating buttons
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"] style:UIBarButtonItemStylePlain target:self action:@selector(navigateBack)];
-    UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Forward"] style:UIBarButtonItemStylePlain target:self action:@selector(navigateForward)];
+    UIImage *backImage = [UIImage imageNamed:@"Back"
+                                     inBundle:[NSBundle bundleForClass:[JBWebViewController class]]
+                compatibleWithTraitCollection:nil];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backImage
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:@selector(navigateBack)];
+    UIImage *forwardImage = [UIImage imageNamed:@"Forward"
+                                    inBundle:[NSBundle bundleForClass:[JBWebViewController class]]
+               compatibleWithTraitCollection:nil];
+    UIBarButtonItem *forwardButton = [[UIBarButtonItem alloc] initWithImage:forwardImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(navigateForward)];
     
     // Adding buttons to NavigationBar
-    [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:backButton, forwardButton, nil]];
+    [self.navigationItem setLeftBarButtonItems:@[backButton, forwardButton]];
     
     // Remember that we have extra buttons now
     _hasExtraButtons = YES;

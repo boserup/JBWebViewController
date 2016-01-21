@@ -11,10 +11,10 @@
 #import <WebKit/WebKit.h>
 
 // Required third-party libraries
-#import "ARChromeActivity/ARChromeActivity.h"
-#import "ARSafariActivity/ARSafariActivity.h"
-#import "NJKWebViewProgress/NJKWebViewProgress.h"
-#import "NJKWebViewProgress/NJKWebViewProgressView.h"
+#import <ARChromeActivity/ARChromeActivity.h>
+#import <ARSafariActivity/ARSafariActivity.h>
+#import <NJKWebViewProgress/NJKWebViewProgress.h>
+#import <NJKWebViewProgress/NJKWebViewProgressView.h>
 
 @interface JBWebViewController : UIViewController <UIWebViewDelegate, NJKWebViewProgressDelegate>
 
