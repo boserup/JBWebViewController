@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "JBWebViewController"
-  s.version      = "1.0.8"
+  s.version      = "1.0.9"
   s.summary      = "A modal view controller for showing websites - inspired by the Facebook app"
   s.description  = <<-DESC
                    A drop-in Facebook inspired modal web browser.
