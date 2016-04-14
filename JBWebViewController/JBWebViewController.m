@@ -27,11 +27,21 @@
 #pragma mark - "Standards"
 
 - (id)initWithUrl:(NSURL *)url {
-	if (self = [self init]) {
-    	// Set url and init views
-    	_url = url;
-    	[self setup];
+	if (self = [self initWithUrl:url mode:JBWebViewTitleModeDefault]) {
 	}
+    
+    // Return self
+    return self;
+}
+
+- (id)initWithUrl:(NSURL *)url mode:(JBWebViewTitleMode)mode
+{
+    if (self = [self init]) {
+        // Set url and init views
+        _url = url;
+        _mode = mode;
+        [self setup];
+    }
     
     // Return self
     return self;
@@ -94,33 +104,48 @@
     self.edgesForExtendedLayout = UIRectEdgeTop;
     
     // Create title & subtitle labels
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [_titleLabel setBackgroundColor:[UIColor clearColor]];
-    [_titleLabel setTextColor:[UIColor blackColor]];
-    [_titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
-    [_titleLabel setTextAlignment:NSTextAlignmentNatural];
-    [_titleLabel setText:_loadingString];
-    [_titleLabel sizeToFit];
-    
-    _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 14, 0, 0)];
-    [_subtitleLabel setBackgroundColor:[UIColor clearColor]];
-    [_subtitleLabel setTextColor:[UIColor blackColor]];
-    [_subtitleLabel setFont:[UIFont systemFontOfSize:12]];
-    [_subtitleLabel setTextAlignment:NSTextAlignmentLeft];
-    [_subtitleLabel setText:[self getDomainFromString:[NSString stringWithFormat:@"%@", _url]]];
-    [_subtitleLabel sizeToFit];
-    
-    // Correct frame sizes after sizeToFit
-    [self adjustNavigationbar];
-    
-    // Add new titleview with labels
-    _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    [_titleView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    
-    [_titleView addSubview:_titleLabel];
-    [_titleView addSubview:_subtitleLabel];
+    switch (_mode) {
+        case JBWebViewTitleModeDefault:
+        {
+            _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+            [_titleLabel setBackgroundColor:[UIColor clearColor]];
+            [_titleLabel setTextColor:[UIColor blackColor]];
+            [_titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+            [_titleLabel setTextAlignment:NSTextAlignmentNatural];
+            [_titleLabel setText:_loadingString];
+            [_titleLabel sizeToFit];
+            
+            _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 14, 0, 0)];
+            [_subtitleLabel setBackgroundColor:[UIColor clearColor]];
+            [_subtitleLabel setTextColor:[UIColor blackColor]];
+            [_subtitleLabel setFont:[UIFont systemFontOfSize:12]];
+            [_subtitleLabel setTextAlignment:NSTextAlignmentLeft];
+            [_subtitleLabel setText:[self getDomainFromString:[NSString stringWithFormat:@"%@", _url]]];
+            [_subtitleLabel sizeToFit];
+            
+            // Correct frame sizes after sizeToFit
+            [self adjustNavigationbar];
+            
+            // Add new titleview with labels
+            _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+            [_titleView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+            
+            [_titleView addSubview:_titleLabel];
+            [_titleView addSubview:_subtitleLabel];
+            self.navigationItem.titleView = _titleView;
+            break;
+        }
+        case JBWebViewTitleModeNative:
+        {
+            _titleLabel = nil;
+            _subtitleLabel = nil;
+            _titleView = nil;
+            break;
+        }
+        default:
+            break;
+    }
 
-    self.navigationItem.titleView = _titleView;
     
     // Inset right buttons
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Share"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
@@ -190,7 +215,10 @@
         }
     }];
 }
-
+- (void)showFromNavigationController:(UINavigationController *)navigationController
+{
+    [navigationController pushViewController:self animated:YES];
+}
 #pragma mark - "Navigation"
 
 - (void)navigateToURL:(NSURL *)url {
@@ -245,9 +273,15 @@
 }
 
 - (void)dismiss {
+    if (self.navigationController.viewControllers.count>1) {
+        //Is push from user-defined navigationController
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
     [self dismissViewControllerAnimated:YES completion:^{
         // Code
     }];
+    }
 }
 
 #pragma mark - "Navigationbar"
@@ -311,26 +345,70 @@
 
 - (void)setWebTitle:(NSString *)title {
     // Set title & update frame
-    [_titleLabel setText:title];
-    [_titleLabel sizeToFit];
-    [self adjustNavigationbar];
+    switch (_mode) {
+        case JBWebViewTitleModeNative:
+        {
+            self.title = title;
+            break;
+        }
+        case JBWebViewTitleModeDefault:
+        {
+            [_titleLabel setText:title];
+            [_titleLabel sizeToFit];
+            [self adjustNavigationbar];
+            break;
+        }
+        default:
+            break;
+    }
+
 }
 
 - (void)setWebSubtitle:(NSString *)subtitle {
     // Set subtitle & update frame
-    [_subtitleLabel setText:subtitle];
-    [_subtitleLabel sizeToFit];
-    [self adjustNavigationbar];
+    switch (_mode) {
+        case JBWebViewTitleModeNative:
+        {
+            break;
+        }
+        case JBWebViewTitleModeDefault:
+        {
+            [_subtitleLabel setText:subtitle];
+            [_subtitleLabel sizeToFit];
+            [self adjustNavigationbar];
+            break;
+        }
+        default:
+            break;
+    }
+
 }
 
 // Get title
 - (NSString *)getWebTitle {
-    return _titleLabel.text;
+    switch (_mode) {
+        case JBWebViewTitleModeDefault:
+            return _titleLabel.text;
+            break;
+        case JBWebViewTitleModeNative:
+            return self.title;
+            break;
+        default:
+            return nil;
+            break;
+    }
 }
 
 // Get subtitle
 - (NSString *)getWebSubtitle {
-    return _subtitleLabel.text;
+    switch (_mode) {
+        case JBWebViewTitleModeDefault:
+            return _subtitleLabel.text;
+            break;
+        default:
+            return nil;
+            break;
+    }
 }
 
 #pragma mark - "Helpers"

@@ -16,6 +16,11 @@
 #import <NJKWebViewProgress/NJKWebViewProgress.h>
 #import <NJKWebViewProgress/NJKWebViewProgressView.h>
 
+typedef enum : NSUInteger {
+    JBWebViewTitleModeDefault=0,
+    JBWebViewTitleModeNative,
+} JBWebViewTitleMode;
+
 @interface JBWebViewController : UIViewController <UIWebViewDelegate, NJKWebViewProgressDelegate>
 
 // Typedef for completion block
@@ -27,9 +32,10 @@ typedef void (^completion)(JBWebViewController *controller);
 // Public variables
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, assign) BOOL hideAddressBar;
-
+@property (nonatomic) JBWebViewTitleMode mode;
 // Public header methods
 - (id)initWithUrl:(NSURL *)url;
+- (id)initWithUrl:(NSURL *)url mode:(JBWebViewTitleMode)mode;
 - (void)show;
 - (void)showFromController:(UIViewController*)controller;
 - (void)dismiss;
@@ -41,6 +47,8 @@ typedef void (^completion)(JBWebViewController *controller);
 - (void)showFromController:(UIViewController*)controller WithCompletion:(completion)completion;
 - (void)navigateToURL:(NSURL *)url;
 - (void)loadRequest:(NSURLRequest *)request;
+
+- (void)showFromNavigationController:(UINavigationController*)navigationController;
 
 // Public return methods
 - (NSString *)getWebTitle;
