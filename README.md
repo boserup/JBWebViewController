@@ -37,13 +37,17 @@ Feel free to add your app to the list.
 ## How to use
 JBWebViewController is ment to be shown modally, which is recommended to be down with it's built in show functionality. Whilst not being recommended, it is however possible to present JBWebViewController outside a modal view controller. JBWebViewController should always be connected to a UINavigationController.
 
-#### Presenting JBWebViewController
+#### Presenting JBWebViewController in default mode
 ```objectivec
 JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:@"http://www.apple.com/iphone/"]];
 
 [controller show];
 ```
-
+#### Presenting JBWebViewController in Native mode
+```objectivec
+JBWebViewController* webController = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:@"http://www.apple.com/iphone/"] mode:JBWebViewTitleModeNative];
+[webController showFromNavigationController:self.navigationController];
+```
 #### Presenting JBWebViewController with block
 ```objectivec
 JBWebViewController *controller = [[JBWebViewController alloc] initWithUrl:[NSURL URLWithString:@"http://www.apple.com/iphone/"]];
