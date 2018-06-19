@@ -364,12 +364,15 @@
     [self setWebTitle:title];
     [self setWebSubtitle:subtitle];
     
+    [_progressView setProgress:progress animated:YES];
+    
     [self updateNavigationButtons];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     // Log error
+    [_progressView setProgress:progress animated:YES];
     NSLog(@"%@", [error localizedDescription]);
 }
 
