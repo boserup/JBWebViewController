@@ -226,7 +226,9 @@
     ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
     
     // Create share controller from our url
-    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.request.URL] applicationActivities:@[safariActivity, chromeActivity]];
+    NSData *pdfData = [NSData dataWithContentsOfFile:pdfFilePath];
+    
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[pdfData] applicationActivities:@[safariActivity, chromeActivity]];
     
     // If device is iPad
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
