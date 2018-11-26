@@ -226,7 +226,7 @@
     ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
     
     // Create share controller from our url
-    NSData *pdfData = [NSData dataWithContentsOfFile:pdfFilePath];
+    NSData *pdfData = [NSData dataWithContentsOfFile:self.webView.request.URL.absoluteString];
     
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[pdfData] applicationActivities:@[safariActivity, chromeActivity]];
     
