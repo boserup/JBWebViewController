@@ -226,7 +226,9 @@
     ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
     
     // Create share controller from our url
-    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.request.URL] applicationActivities:@[safariActivity, chromeActivity]];
+    NSData *pdfData = [NSData dataWithContentsOfFile:self.webView.request.URL.absoluteString];
+    
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[pdfData] applicationActivities:@[safariActivity, chromeActivity]];
     
     // If device is iPad
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -364,12 +366,15 @@
     [self setWebTitle:title];
     [self setWebSubtitle:subtitle];
     
+    [_progressView setProgress:100.0 animated:YES];
+    
     [self updateNavigationButtons];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     // Log error
+    [_progressView setProgress:0.0 animated:YES];
     NSLog(@"%@", [error localizedDescription]);
 }
 
